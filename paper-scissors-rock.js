@@ -17,7 +17,7 @@ function getComputerChoice() {
         computerChoice = "Rock";
     }
     
-    return computerChoice;
+    return computerChoice + randomNumber;
 }
 
 // playRound with an initilialised player selection variable
