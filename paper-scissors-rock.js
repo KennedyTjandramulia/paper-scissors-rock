@@ -34,13 +34,11 @@ function getComputerChoice() {
 // output you lose if player is scissors
 // else print its a draw
 //let playerSelection = "rock";
-let playerSelection = "scissors";
-let computerSelection = getComputerChoice();
-console.log("Player chose " + playerSelection);
-console.log("Computer chose " + computerSelection);
-console.log(playRound(playerSelection,computerSelection));
-
 function playRound(playerSelection,computerSelection) {
+    playerSelection = prompt("Choose paper,scissors or rock.");
+    console.log("Player chose " + playerSelection);
+    console.log("Computer chose " + computerSelection);
+
     if (playerSelection.toLowerCase() == "rock" && computerSelection === "paper") {
         return "You lose! Paper beats Rock!";
     }
@@ -63,3 +61,33 @@ function playRound(playerSelection,computerSelection) {
         return "It's a Draw!";
     }
 }
+
+// if playRound returns a You win string return win
+// if playRound returns a You lose string return lose
+// otherwise return draw
+function winLose(result) {
+    if (result === "You win! Rock beats Scissors!" || result === "You win! Scissors beats Paper!" || result === "You win! Paper beats Rock!") {
+        return "win";
+    }
+    else if (result === "You lose! Rock beats Scissors!" || result === "You lose! Scissors beats Paper!" || result === "You lose! Paper beats Rock!") {
+        return "lose";
+    }
+    else {
+        return "draw";
+    }
+}
+
+// Play 5 rounds and keep score
+// initialise a count for looping
+// initialise a count for computer wins and player wins
+// if playRound is a win add score to player count
+// if playRound is a lose add score to player count
+// if playRound is a draw do not add score
+
+let playerSelection;
+let computerSelection = getComputerChoice();
+let playerScore = 0;
+let computerScore = 0;
+let result = playRound(playerSelection,computerSelection)
+console.log(result);
+console.log(winLose(result));
