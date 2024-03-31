@@ -8,16 +8,16 @@ function getComputerChoice() {
     let computerChoice;
     let randomNumber = Math.floor(Math.random() * 100);
     if (randomNumber % 3 === 0) {
-        computerChoice = "Paper";
+        computerChoice = "paper";
     }
     else if (randomNumber % 2 === 0) {
-        computerChoice = "Scissors";
+        computerChoice = "scissors";
     }
     else {
-        computerChoice = "Rock";
+        computerChoice = "rock";
     }
     
-    return computerChoice + randomNumber;
+    return computerChoice;
 }
 
 // playRound with an initilialised player selection variable
@@ -33,3 +33,33 @@ function getComputerChoice() {
 // then output you win if player is paper
 // output you lose if player is scissors
 // else print its a draw
+//let playerSelection = "rock";
+let playerSelection = "scissors";
+let computerSelection = getComputerChoice();
+console.log("Player chose " + playerSelection);
+console.log("Computer chose " + computerSelection);
+console.log(playRound(playerSelection,computerSelection));
+
+function playRound(playerSelection,computerSelection) {
+    if (playerSelection.toLowerCase() == "rock" && computerSelection === "paper") {
+        return "You lose! Paper beats Rock!";
+    }
+    else if (playerSelection.toLowerCase() == "rock" && computerSelection === "scissors") {
+        return "You win! Rock beats Scissors!";
+    }
+    else if (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper") {
+        return "You win! Scissors beats Paper!";
+    }
+    else if (playerSelection.toLowerCase() === "paper" && computerSelection === "scissors") {
+        return "You lose! Scissors beats Paper!";
+    }
+    else if (playerSelection.toLowerCase() === "paper" && computerSelection === "rock") {
+        return "You win! Paper beats Rock!";
+    }
+    else if (playerSelection.toLowerCase() === "scissors" && computerSelection === "rock") {
+        return "You lose! Rock beats Scissors!";
+    }
+    else {
+        return "It's a Draw!";
+    }
+}
