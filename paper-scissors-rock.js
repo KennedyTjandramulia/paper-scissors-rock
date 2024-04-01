@@ -20,7 +20,7 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-// playRound with an initilialised player selection variable
+// playRound with an initialised player selection variable
 // if computer is paper
 // output you lose if player is scissors
 // output you win if player is 
@@ -39,10 +39,10 @@ function playRound(playerSelection,computerSelection) {
     console.log("Player chose " + playerSelection);
     console.log("Computer chose " + computerSelection);
 
-    if (playerSelection.toLowerCase() == "rock" && computerSelection === "paper") {
+    if (playerSelection.toLowerCase() === "rock" && computerSelection === "paper") {
         return "You lose! Paper beats Rock!";
     }
-    else if (playerSelection.toLowerCase() == "rock" && computerSelection === "scissors") {
+    else if (playerSelection.toLowerCase() === "rock" && computerSelection === "scissors") {
         return "You win! Rock beats Scissors!";
     }
     else if (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper") {
@@ -83,11 +83,37 @@ function winLose(result) {
 // if playRound is a win add score to player count
 // if playRound is a lose add score to player count
 // if playRound is a draw do not add score
+function playGame() {
+    let playerSelection;
+    let computerSelection = getComputerChoice();
+    let playerScore = 0;
+    let computerScore = 0;
+    let result;
+    let gameRound = 0;
 
-let playerSelection;
-let computerSelection = getComputerChoice();
-let playerScore = 0;
-let computerScore = 0;
-let result = playRound(playerSelection,computerSelection)
+    while (gameRound < 5) {
+        result = playRound(playerSelection,computerSelection);
+        console.log(result);
+    
+        switch (winLose(result)) {
+            case "win":
+                playerScore ++;
+            case "lose":
+                computerScore ++;
+        }
+        console.log("Player " + playerScore + " vs " + "Computer " + computerScore);
+        gameRound ++;
+    }
+
+}
+
+
+// Scoring
+// if winLose is win player score is +1
+// if winLose is lose computer score is +1
+// if winLose is draw break
+
+//testing
+/*let result = playRound(playerSelection,computerSelection)
 console.log(result);
-console.log(winLose(result));
+console.log(winLose(result));*/
