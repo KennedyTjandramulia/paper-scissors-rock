@@ -85,21 +85,25 @@ function winLose(result) {
 // if playRound is a draw do not add score
 function playGame() {
     let playerSelection;
-    let computerSelection = getComputerChoice();
+    let computerSelection;
     let playerScore = 0;
     let computerScore = 0;
     let result;
     let gameRound = 0;
 
     while (gameRound < 5) {
+        computerSelection = getComputerChoice();
         result = playRound(playerSelection,computerSelection);
         console.log(result);
     
-        switch (winLose(result)) {
-            case "win":
-                playerScore ++;
-            case "lose":
-                computerScore ++;
+        if (winLose(result) === "win") {
+            playerScore ++;
+        }
+        else if (winLose(result) === "lose") {
+            computerScore ++;
+        }
+        else {
+            ;
         }
         console.log("Player " + playerScore + " vs " + "Computer " + computerScore);
         gameRound ++;
